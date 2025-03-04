@@ -1,8 +1,6 @@
+import {img1, img2, img3} from '@images';
 import React from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
-const img = require('../images/img1.jpg');
-const img2 = require('../images/img2.jpg');
-const img3 = require('../images/img3.jpg');
 
 type BodyProps = {index: number};
 
@@ -19,7 +17,7 @@ export const Body = ({index}: BodyProps) => {
         </View>
 
         <View style={styles.imageView}>
-          <Image source={img} style={styles.image} resizeMode="stretch" />
+          <Image source={img1} style={styles.image} resizeMode="stretch" />
         </View>
       </View>
     );

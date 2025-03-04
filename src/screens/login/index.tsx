@@ -1,24 +1,20 @@
+import {Button} from '@components/button';
+import {Screen} from '@components/screen';
 import BottomSheet, {
   BottomSheetBackdrop,
+  BottomSheetBackdropProps,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import auth from '@react-native-firebase/auth';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-google-signin/google-signin';
+import {google} from '@icons';
+import {GoogleSigninButton} from '@react-native-google-signin/google-signin';
+import {GoogleService} from '@utils/auth/google';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Image, ProgressBar} from 'react-native-ui-lib';
-import {Button} from '../components/button';
-import {Screen} from '../components/screen';
-import {Body} from './body';
-import {GoogleService} from '../google';
+import {Body} from './components/body';
 
-const iconGoogle = require('../icons/google.png');
-
-export const HomeScreen = () => {
+export const LoginScreen = () => {
   // const navigation = useNavigation();
 
   const insets = useSafeAreaInsets();
@@ -42,6 +38,20 @@ export const HomeScreen = () => {
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
   }, []);
+
+  const backdropComponent = useCallback<React.FC<BottomSheetBackdropProps>>(
+    ({animatedIndex, animatedPosition, style}) => (
+      <BottomSheetBackdrop
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+        pressBehavior="close"
+        animatedIndex={animatedIndex}
+        animatedPosition={animatedPosition}
+        style={[style, styles.bottomSheetBackdrop]}
+      />
+    ),
+    [],
+  );
 
   return (
     <Screen barStyle="dark-content">
@@ -70,30 +80,7 @@ export const HomeScreen = () => {
         index={-1}
         snapPoints={['50%']}
         enablePanDownToClose
-        // backdropComponent={({animatedIndex, animatedPosition, style}) => (
-        //   <BottomSheetBackdrop
-        //     animatedIndex={animatedIndex}
-        //     animatedPosition={animatedPosition}
-        //     // opacity={1}
-        //     style={[style, {opacity: 0}]}
-        //   />
-        // )}
-
-        // eslint-disable-next-line react/no-unstable-nested-components
-        backdropComponent={({animatedIndex, animatedPosition, style}) => (
-          <BottomSheetBackdrop
-            appearsOnIndex={0}
-            disappearsOnIndex={-1}
-            pressBehavior="close"
-            animatedIndex={animatedIndex}
-            animatedPosition={animatedPosition}
-            style={[
-              style,
-              {opacity: 1.0},
-              {backgroundColor: 'rgba(0, 0, 0, 1.0)'},
-            ]}
-          />
-        )}>
+        backdropComponent={backdropComponent}>
         <BottomSheetView style={styles.bottomSheetViewContainer}>
           <View style={styles.textView}>
             <Text style={styles.headerText}>Log in or sign up</Text>
@@ -108,7 +95,7 @@ export const HomeScreen = () => {
               outline
               label="Log in with Google"
               style={styles.loginButton}>
-              <Image source={iconGoogle} style={styles.iconGoogle} />
+              <Image source={google} style={styles.iconGoogle} />
             </Button>
           </View>
         </BottomSheetView>
@@ -137,6 +124,10 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 20,
   },
+  bottomSheetBackdrop: {
+    opacity: 1.0,
+    backgroundColor: 'rgba(0, 0, 0, 1.0)',
+  },
   bottomSheet: {
     shadowColor: '#000',
     shadowOffset: {
@@ -145,7 +136,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.7,
     shadowRadius: 16.0,
-
     elevation: 50,
   },
 
