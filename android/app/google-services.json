@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "871766117735",
+    "project_id": "project1-8a424",
+    "storage_bucket": "project1-8a424.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871766117735:android:adc3a911ba544dd982b3c2",
+        "android_client_info": {
+          "package_name": "com.learnenglishapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871766117735-jid0nph52usp67v5ol4fvas210j3ji5v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.learnenglishapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "871766117735-iaad145g5d8lle48ujp6ou7s4i1grq5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkQlq_n0OsJr9el5v6nWw3DYl13_BtmM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871766117735-iaad145g5d8lle48ujp6ou7s4i1grq5f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "871766117735-22k23rfe84q0hs8unmhh0843fpslb9kq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.LearnEnglishApp",
+                "app_store_id": "7783832003"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

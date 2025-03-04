@@ -2,13 +2,19 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
+import auth from '@react-native-firebase/auth';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from '@react-native-google-signin/google-signin';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Image, ProgressBar} from 'react-native-ui-lib';
 import {Button} from '../components/button';
-import {Body} from './body';
 import {Screen} from '../components/screen';
+import {Body} from './body';
+import {GoogleService} from '../google';
 
 const iconGoogle = require('../icons/google.png');
 
@@ -97,7 +103,7 @@ export const HomeScreen = () => {
           </View>
 
           <View style={styles.buttonBottomSheetView}>
-            <Button label="Sign up with email" />
+            <GoogleSigninButton onPress={GoogleService.login} />
             <Button
               outline
               label="Log in with Google"
