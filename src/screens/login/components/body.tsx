@@ -9,7 +9,7 @@ export const Body = ({index}: BodyProps) => {
     return (
       <View style={{flex: 1}}>
         <View style={styles.textView}>
-          <Text style={styles.headerText}>Learn from the best.</Text>
+          <Text style={styles.headerText}>Learn from the best</Text>
           <Text style={styles.bodyText}>
             Online classes are taught by the world’s best experts in each
             industry.
@@ -30,10 +30,9 @@ export const Body = ({index}: BodyProps) => {
           <Image source={img2} style={styles.image} resizeMode="stretch" />
         </View>
         <View style={styles.textView}>
-          <Text style={styles.headerText}>Learn from the best.</Text>
+          <Text style={styles.headerText}>Maximize your potential</Text>
           <Text style={styles.bodyText}>
-            Online classes are taught by the world’s best experts in each
-            industry.
+            Achieve your learning goals in half the time with our features.
           </Text>
         </View>
       </View>
@@ -43,10 +42,9 @@ export const Body = ({index}: BodyProps) => {
   return (
     <View style={{flex: 1}}>
       <View style={styles.textView}>
-        <Text style={styles.headerText}>Learn from the best.</Text>
+        <Text style={styles.headerText}>Explore a range of topics</Text>
         <Text style={styles.bodyText}>
-          Online classes are taught by the world’s best experts in each
-          industry.
+          Access to 210+ courses and short videos to expand your knowledge.
         </Text>
       </View>
 
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   headerText: {
-    fontSize: 36,
+    fontSize: 34,
     fontWeight: 'bold',
   },
   bodyText: {

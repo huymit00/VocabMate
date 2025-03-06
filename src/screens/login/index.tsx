@@ -6,7 +6,7 @@ import BottomSheet, {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import {google} from '@icons';
-import {GoogleSigninButton} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 import {GoogleService} from '@utils/auth/google';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
@@ -53,6 +53,18 @@ export const LoginScreen = () => {
     [],
   );
 
+  const login = useCallback(async () => {
+    const {idToken, success} = await GoogleService.login();
+
+    if (success) {
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      // Sign-in the user with the credential
+      return auth().signInWithCredential(googleCredential);
+    }
+  }, []);
+
   return (
     <Screen barStyle="dark-content">
       <View
@@ -90,8 +102,9 @@ export const LoginScreen = () => {
           </View>
 
           <View style={styles.buttonBottomSheetView}>
-            <GoogleSigninButton onPress={GoogleService.login} />
+            {/* <GoogleSigninButton onPress={login} /> */}
             <Button
+              onPress={login}
               outline
               label="Log in with Google"
               style={styles.loginButton}>
